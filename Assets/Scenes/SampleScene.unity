@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 510759720}
   - component: {fileID: 510759719}
   - component: {fileID: 510759718}
+  - component: {fileID: 510759722}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -171,9 +172,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -246,6 +247,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &510759722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510759717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df293baefa764648a6fb4e4d9c21308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accelerationPower: 5
+  steeringPower: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
