@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]float steeringPower = 2f;
     [SerializeField]bool isAccelerating, isBraking, isDrifting;
     float steeringAmount, speed, direction;
+    [SerializeField]float deliveries, deliveryTime;
     
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
         isAccelerating = false;
         isBraking = false;
         isDrifting = false;
+        deliveries = 0;
+        deliveryTime = 60f;
     }
 
     // Update is called once per frame
