@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         hasDeliveryText.text = ("Pickup the food");
         gameOver = false;
         gameOverMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
