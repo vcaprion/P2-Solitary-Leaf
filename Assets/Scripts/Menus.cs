@@ -48,4 +48,11 @@ public class Menus : MonoBehaviour
     {
         SettingsMenu.SetActive(false);
     }
+
+    public void RetryLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Retry!");
+        Time.timeScale = 1;
+    }
 }
