@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (col.GetComponent<Collider2D>().tag == "PickupPoint" && deliveries > 0)
         {
-            hasDelivery = false;
+            hasDelivery = true;
         }
 
         if (col.GetComponent<Collider2D>().tag == "DropoffPoint" && hasDelivery)
