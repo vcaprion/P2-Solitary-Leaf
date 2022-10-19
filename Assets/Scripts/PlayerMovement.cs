@@ -10,9 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]float accelerationPower = 15f;
     [SerializeField]float steeringPower = 2f;
     [SerializeField]bool isAccelerating, isBraking, isDrifting, countownStarted, hasDelivery;
+    public bool gameOver;
     float steeringAmount, speed, direction;
     [SerializeField]float deliveries, deliveryTime;
-    [SerializeField]Text timerText, deliveryText, accelerationText;
+    [SerializeField]Text timerText, deliveryText, accelerationText, hasDeliveryText;
+    [SerializeField]GameObject gameOverMenu;
     
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
         deliveryTime = 60f;
         timerText.text = ($"Time Remaining for next delivery: {deliveryTime} seconds");
         deliveryText.text = ($"Deliveries Completed: {deliveries}");
+        hasDeliveryText.text = ("Pickup the food");
+        gameOver = false;
+        gameOverMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -68,7 +73,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isBraking = false;
         }
-
         if (Input.GetButtonDown("Escape"))
         {
             Debug.Log ("Game closed");
@@ -80,6 +84,17 @@ public class PlayerMovement : MonoBehaviour
             deliveryTime -= Time.deltaTime;
             UpdateCountdown();
         }
+
+        if (deliveryTime <= 0)
+        {
+            countownStarted = false;
+            UpdateCountdown();
+            gameOver = true;
+            gameOverMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+
     }
 
     void AccelerationCheck()
@@ -134,15 +149,18 @@ public class PlayerMovement : MonoBehaviour
         {
             countownStarted = true;
             hasDelivery = true;
+            hasDeliveryText.text = "You have a delivery!";
         }
         else if (col.GetComponent<Collider2D>().tag == "PickupPoint" && deliveries > 0)
         {
             hasDelivery = true;
+            hasDeliveryText.text = "You have a delivery!";
         }
 
         if (col.GetComponent<Collider2D>().tag == "DropoffPoint" && hasDelivery)
         {
             hasDelivery = false;
+            hasDeliveryText.text = "Pick up the next delivery!";
             deliveries++;
             UpdateDeliveries();
             deliveryTime += 5;
