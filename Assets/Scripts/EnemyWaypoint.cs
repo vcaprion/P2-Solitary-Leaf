@@ -19,7 +19,9 @@ public class EnemyWaypoint : MonoBehaviour
     public Transform Reverse;
     private Transform wp;
     private bool CarInFront;
-    private Vector3 TargetPos;
+    private Transform TargetPos;
+    public float RotationSpeed;
+    private Transform rotat;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,7 @@ public class EnemyWaypoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //transform.rotation = rotat.rotation;
         float singleStep = Speed * Time.deltaTime;
 
         wp = PatrolPoints[currentWaypoint];
@@ -51,13 +54,27 @@ public class EnemyWaypoint : MonoBehaviour
         else
         {
             //  Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+            //Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
+            //transform.LookAt(newPosition + transform.position);
             transform.position = Vector3.MoveTowards(transform.position, wp.position, Speed * Time.deltaTime);
             // transform.rotation = Quaternion.LookRotation(newDirection);
         }
-        TargetPos.x = transform.position.x;
-        TargetPos.y = transform.position.y;
-        TargetPos.z = wp.position.z;
+        //TargetPos = new Vector3(transform.position.x , transform.position.y, wp.transform.position.z);
+
+       // Quaternion.Euler direction = (wp.position.z - transform.position.z);
+        //Quaternion rotation = Quaternion.Euler(0, 0, wp.position.z);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
         //transform.Rotate(TargetPos);
+
+
+            // Vector3 targ = wp.transform.position;
+            // targ.x = 0f;
+            //  Vector3 objectPos = transform.position;
+            // targ.z = targ.z - objectPos.z;
+            // targ.y = targ.y - objectPos.y;
+ 
+            // float angle = Mathf.Atan2(targ.y, targ.z) * Mathf.Rad2Deg;
+            //     transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
 
         if (Speed >= startSpeed)
@@ -106,6 +123,12 @@ public class EnemyWaypoint : MonoBehaviour
             wp = Reverse;
             Speed = startSpeed;
             Invoke(nameof(ResetAttack2), 5f);
+        }
+        if (other.gameObject.tag == "Player" && isStop == false)
+        {
+            isStop=true;
+            Speed = 0;
+            Invoke(nameof(ResetAttack), stopTime);
         }
     }
 
