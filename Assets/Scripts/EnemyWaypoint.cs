@@ -57,7 +57,8 @@ public class EnemyWaypoint : MonoBehaviour
             //Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
             //transform.LookAt(newPosition + transform.position);
             transform.position = Vector3.MoveTowards(transform.position, wp.position, Speed * Time.deltaTime);
-            // transform.rotation = Quaternion.LookRotation(newDirection);
+            //rotat = Quaternion.Euler(wp.transform.position.x, wp.transform.position.y, wp.transform.position.z);
+            //transform.rotation = Quaternion.LookRotation(rotat);
         }
         //TargetPos = new Vector3(transform.position.x , transform.position.y, wp.transform.position.z);
 

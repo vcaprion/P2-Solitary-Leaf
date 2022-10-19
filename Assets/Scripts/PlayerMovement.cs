@@ -170,11 +170,11 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateCountdown()
     {
-        timerText.text = ($"Time remaining: {deliveryTime}.");
+        timerText.text = ($"Time remaining: {deliveryTime.ToString("F1")}.");
     }
 
     void UpdateDeliveries()
     {
-        deliveryText.text = ($"Deliveries Completed: {deliveries}.");
+        deliveryText.text = ($"Deliveries Completed: {deliveries.ToString("F1")}.");
     }
 }
