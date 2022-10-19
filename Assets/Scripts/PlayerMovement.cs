@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        accelerationText.text = ($"{accelerationPower} mph");
+        accelerationText.text = ($"{accelerationPower.ToString("F1")} mph");
         if (Input.GetButton("Accelerate"))
         {
             isAccelerating = true;
