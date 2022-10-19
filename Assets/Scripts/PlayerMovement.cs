@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,9 +9,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]float accelerationPower = 15f;
     [SerializeField]float steeringPower = 2f;
-    [SerializeField]bool isAccelerating, isBraking, isDrifting;
+    [SerializeField]bool isAccelerating, isBraking, isDrifting, countownStarted, hasDelivery;
     float steeringAmount, speed, direction;
     [SerializeField]float deliveries, deliveryTime;
+    [SerializeField]Text timerText, deliveryText, accelerationText;
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
         isDrifting = false;
         deliveries = 0;
         deliveryTime = 60f;
+        timerText.text = ($"Time Remaining for next delivery: {deliveryTime} seconds");
+        deliveryText.text = ($"Deliveries Completed: {deliveries}");
     }
 
     // Update is called once per frame
@@ -38,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        accelerationText.text = ($"{accelerationPower} mph");
         if (Input.GetButton("Accelerate"))
         {
             isAccelerating = true;
@@ -63,6 +68,18 @@ public class PlayerMovement : MonoBehaviour
         {
             isBraking = false;
         }
+
+        if (Input.GetButtonDown("Escape"))
+        {
+            Debug.Log ("Game closed");
+            Application.Quit();
+        }
+
+        if (countownStarted)
+        {
+            deliveryTime -= Time.deltaTime;
+            UpdateCountdown();
+        }
     }
 
     void AccelerationCheck()
@@ -70,9 +87,9 @@ public class PlayerMovement : MonoBehaviour
         if (isAccelerating)
         {
             accelerationPower += Time.deltaTime*2f;
-            if (accelerationPower >= 60)
+            if (accelerationPower >= 45)
             {
-                accelerationPower = 60;
+                accelerationPower = 45;
                 return;
             }
         }
@@ -88,9 +105,9 @@ public class PlayerMovement : MonoBehaviour
 
     void BrakeCheck()
     {
-        if(isBraking)
+        if(isBraking && accelerationPower > 15)
         {
-            accelerationPower = 10f;
+            accelerationPower -= Time.deltaTime*7.5f;
         }
         else
         {
@@ -109,5 +126,36 @@ public class PlayerMovement : MonoBehaviour
             steeringPower = 2f;
             isDrifting = false;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.GetComponent<Collider2D>().tag == "PickupPoint" && deliveries <= 0)
+        {
+            countownStarted = true;
+            hasDelivery = true;
+        }
+        else if (col.GetComponent<Collider2D>().tag == "PickupPoint" && deliveries > 0)
+        {
+            hasDelivery = false;
+        }
+
+        if (col.GetComponent<Collider2D>().tag == "DropoffPoint" && hasDelivery)
+        {
+            hasDelivery = false;
+            deliveries++;
+            UpdateDeliveries();
+            deliveryTime += 5;
+        }
+    }
+
+    void UpdateCountdown()
+    {
+        timerText.text = ($"Time remaining: {deliveryTime}.");
+    }
+
+    void UpdateDeliveries()
+    {
+        deliveryText.text = ($"Deliveries Completed: {deliveries}.");
     }
 }

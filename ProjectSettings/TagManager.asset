@@ -7,6 +7,8 @@ TagManager:
   - Car
   - BackOfCar
   - Stop
+  - PickupPoint
+  - DropoffPoint
   layers:
   - Default
   - TransparentFX

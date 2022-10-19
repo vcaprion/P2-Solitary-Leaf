@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4665812970206203330}
   - component: {fileID: 4665812970206203331}
   - component: {fileID: 4665812970206203340}
-  - component: {fileID: 4665812970206203341}
   - component: {fileID: 4665812970206203329}
+  - component: {fileID: 4289499605523716427}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0f61d98feb6b8244862546cb3725345, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,22 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &4665812970206203341
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4665812970206203342}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.1, y: 2.1}
-  m_Direction: 0
 --- !u!114 &4665812970206203329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,3 +123,23 @@ MonoBehaviour:
   accelerationPower: 15
   steeringPower: 3
   isAccelerating: 0
+  isBraking: 0
+  isDrifting: 0
+  deliveries: 0
+  deliveryTime: 0
+--- !u!70 &4289499605523716427
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665812970206203342}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.6, y: 1}
+  m_Direction: 0
