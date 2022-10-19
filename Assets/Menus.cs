@@ -5,32 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class Menus : MonoBehaviour
 {
-    public GameObject SettingsMenu;
-    private bool settings;
-    private void OnEnable()
-    {
-
-    }
-    private void OnDisable()
-    {
-
-    }
-    
+    [SerializeField]bool settings;
+    [SerializeField]GameObject SettingsMenu;
     public void PlayGame()
     {
         Debug.Log("Game Started!");
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1;
     }
+
     void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
         settings = false;
     }
     void Update()
     {
-            if (Input.GetButtonDown("Exit") &&settings == true)
+            if (Input.GetButtonDown("Exit"))
             {
-            SettingsMenu.SetActive(false);
+                Application.Quit();
             }
     }
     public void ExitGame()
@@ -38,11 +30,7 @@ public class Menus : MonoBehaviour
         Application.Quit();
         Debug.Log("Quit!");
     }
-
-    public void LoadMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
+    
     public void Settings()
     {
         if (settings == false)

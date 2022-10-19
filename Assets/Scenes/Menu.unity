@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d22ccdaa9eca34aba1ee892425424a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: 0
   SettingsMenu: {fileID: 579604629}
 --- !u!114 &213010147
 MonoBehaviour:
@@ -424,7 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1254534944}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &320958588
