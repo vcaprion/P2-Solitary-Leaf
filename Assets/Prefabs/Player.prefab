@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b0f61d98feb6b8244862546cb3725345, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -125,8 +125,13 @@ MonoBehaviour:
   isAccelerating: 0
   isBraking: 0
   isDrifting: 0
+  countownStarted: 0
+  hasDelivery: 0
   deliveries: 0
   deliveryTime: 0
+  timerText: {fileID: 0}
+  deliveryText: {fileID: 0}
+  accelerationText: {fileID: 0}
 --- !u!70 &4289499605523716427
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
