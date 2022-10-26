@@ -30681,6 +30681,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4289499605523716427, guid: 526fbea1a2eca5145862b01a47c357ab, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4665812970206203329, guid: 526fbea1a2eca5145862b01a47c357ab, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -30699,7 +30703,7 @@ PrefabInstance:
       objectReference: {fileID: 2110043845}
     - target: {fileID: 4665812970206203329, guid: 526fbea1a2eca5145862b01a47c357ab, type: 3}
       propertyPath: steeringPower
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4665812970206203329, guid: 526fbea1a2eca5145862b01a47c357ab, type: 3}
       propertyPath: hasDeliveryText
@@ -30785,6 +30789,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4665812970206203331, guid: 526fbea1a2eca5145862b01a47c357ab, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665812970206203340, guid: 526fbea1a2eca5145862b01a47c357ab, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1cf5c9efcfc8c1143929ba9fb04af25f, type: 2}
     - target: {fileID: 4665812970206203342, guid: 526fbea1a2eca5145862b01a47c357ab, type: 3}
       propertyPath: m_Name
       value: Player

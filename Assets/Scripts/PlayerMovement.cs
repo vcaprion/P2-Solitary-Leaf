@@ -120,6 +120,8 @@ public class PlayerMovement : MonoBehaviour
             gameOver = true;
             gameOverMenu.SetActive(true);
             speed = 0;
+            accelerationPower = 0;
+            Time.timeScale = 0;
         }
 
 
@@ -162,12 +164,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isDrifting)
         {
-            steeringPower = 3f;
+            steeringPower = 2f;
             accelerationPower -= Time.deltaTime*1.5f;
         }
         else
         {
-            steeringPower = 2f;
+            steeringPower = 1.5f;
             isDrifting = false;
         }
     }
