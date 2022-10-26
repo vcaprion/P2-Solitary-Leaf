@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]float steeringPower = 2f;
     [SerializeField]bool isAccelerating, isBraking, isDrifting, countownStarted, hasDelivery;
     public bool gameOver;
-    float steeringAmount, speed, direction;
+    [SerializeField]float steeringAmount, speed, direction;
     [SerializeField]float deliveries, deliveryTime;
     [SerializeField]Text timerText, deliveryText, accelerationText, hasDeliveryText;
     [SerializeField]GameObject gameOverMenu;
@@ -129,12 +129,21 @@ public class PlayerMovement : MonoBehaviour
 
     void AccelerationCheck()
     {
-        if (isAccelerating)
+        if (isAccelerating && direction > 0)
         {
             accelerationPower += Time.deltaTime*2f;
             if (accelerationPower >= 45)
             {
                 accelerationPower = 45;
+                return;
+            }
+        }
+        else if (isAccelerating && direction < 0)
+        {
+            accelerationPower += Time.deltaTime*1.5f;
+            if (accelerationPower >= 30)
+            {
+                accelerationPower = 30;
                 return;
             }
         }
