@@ -69,6 +69,10 @@ public class PlayerMovement : MonoBehaviour
                 isBraking = false;
                 DriftCheck();
             }
+            else
+            {
+                isDrifting = false;
+            }
         }
         else
         {
@@ -135,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isDrifting)
         {
-            steeringPower = 3f;
+            steeringPower = 4f;
         }
         if (!isAccelerating)
         {
