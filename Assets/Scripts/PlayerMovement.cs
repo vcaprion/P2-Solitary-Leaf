@@ -193,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
             deliveries++;
             UpdateDeliveries();
             deliveryTime += 5;
+            NewRandomNumber();
         }
     }
 
