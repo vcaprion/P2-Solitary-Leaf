@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4665812970206203330}
   - component: {fileID: 4665812970206203331}
-  - component: {fileID: 4665812970206203340}
   - component: {fileID: 4665812970206203329}
+  - component: {fileID: 4665812970206203340}
   - component: {fileID: 4289499605523716427}
   m_Layer: 0
   m_Name: Player
@@ -87,6 +87,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4665812970206203329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665812970206203342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df293baefa764648a6fb4e4d9c21308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accelerationPower: 15
+  steeringPower: 3
+  isAccelerating: 0
+  isBraking: 0
+  isDrifting: 0
+  countownStarted: 0
+  hasDelivery: 0
+  gameOver: 0
+  deliveries: 0
+  deliveryTime: 0
+  timerText: {fileID: 0}
+  deliveryText: {fileID: 0}
+  accelerationText: {fileID: 0}
+  hasDeliveryText: {fileID: 0}
+  gameOverMenu: {fileID: 0}
+  randomNumber: 0
+  PickupPoints: []
+  DropoffPoints: []
 --- !u!50 &4665812970206203340
 Rigidbody2D:
   serializedVersion: 4
@@ -108,30 +138,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4665812970206203329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4665812970206203342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df293baefa764648a6fb4e4d9c21308, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  accelerationPower: 15
-  steeringPower: 3
-  isAccelerating: 0
-  isBraking: 0
-  isDrifting: 0
-  countownStarted: 0
-  hasDelivery: 0
-  deliveries: 0
-  deliveryTime: 0
-  timerText: {fileID: 0}
-  deliveryText: {fileID: 0}
-  accelerationText: {fileID: 0}
 --- !u!70 &4289499605523716427
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

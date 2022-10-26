@@ -15,10 +15,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]float deliveries, deliveryTime;
     [SerializeField]Text timerText, deliveryText, accelerationText, hasDeliveryText;
     [SerializeField]GameObject gameOverMenu;
+
+    public int randomNumber;
+    private int lastNumber;
+    public List<GameObject> PickupPoints = new List<GameObject>();
+    public List<GameObject> DropoffPoints = new List<GameObject>();
+    private GameObject currentPPoint;
+    private GameObject currentDpoint;
     
     // Start is called before the first frame update
     void Start()
     {
+        NewRandomNumber();
         rb = GetComponent<Rigidbody2D>();
         isAccelerating = false;
         isBraking = false;
@@ -48,6 +56,22 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+                if (randomNumber >= 0)
+        {
+                foreach (GameObject obj in PickupPoints)
+            {
+                obj.SetActive(false);
+            }
+                foreach (GameObject obj in DropoffPoints)
+            {
+                obj.SetActive(false);
+            }
+            PickupPoints[randomNumber].SetActive(true);
+            DropoffPoints[randomNumber].SetActive(true);
+        }
+
+
+
         accelerationText.text = ($"{accelerationPower.ToString("F1")} mph");
         if (Input.GetButton("Accelerate"))
         {
@@ -181,4 +205,14 @@ public class PlayerMovement : MonoBehaviour
     {
         deliveryText.text = ($"Deliveries Completed: {deliveries.ToString("F1")}.");
     }
+
+    public virtual void NewRandomNumber()
+{
+    randomNumber = Random.Range(0, 2);
+    if (randomNumber == lastNumber)
+    {
+        randomNumber = Random.Range(0, 2);
+    }
+    lastNumber = randomNumber;
+}
 }
