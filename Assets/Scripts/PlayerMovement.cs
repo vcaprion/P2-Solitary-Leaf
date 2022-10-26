@@ -69,14 +69,13 @@ public class PlayerMovement : MonoBehaviour
                 isBraking = false;
                 DriftCheck();
             }
-            else
-            {
-                isDrifting = false;
-            }
         }
         else
         {
             isBraking = false;
+            isDrifting = false;
+            BrakeCheck();
+            DriftCheck();
         }
         if (Input.GetButtonDown("Escape"))
         {
@@ -139,9 +138,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isDrifting)
         {
-            steeringPower = 4f;
+            steeringPower = 3f;
+            accelerationPower -= Time.deltaTime*1.5f;
         }
-        if (!isAccelerating)
+        else
         {
             steeringPower = 2f;
             isDrifting = false;
