@@ -22,10 +22,13 @@ public class EnemyWaypoint : MonoBehaviour
     private Transform TargetPos;
     public float RotationSpeed;
     private Transform rotat;
+    private Rigidbody2D rb;
+    private GameObject g;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = this.GetComponent<Rigidbody2D>();
         CarInFront = false;
         Speed = startSpeed;
         // ai = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -57,9 +60,11 @@ public class EnemyWaypoint : MonoBehaviour
             //Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
             //transform.LookAt(newPosition + transform.position);
             transform.position = Vector3.MoveTowards(transform.position, wp.position, Speed * Time.deltaTime);
-            //rotat = Quaternion.Euler(wp.transform.position.x, wp.transform.position.y, wp.transform.position.z);
-            //transform.rotation = Quaternion.LookRotation(rotat);
+
         }
+
+            rotat = wp;
+            //transform.rotation = transform.Rotate(new Vector3(transform.position.x, 0f, rotat.position.z));
         //TargetPos = new Vector3(transform.position.x , transform.position.y, wp.transform.position.z);
 
        // Quaternion.Euler direction = (wp.position.z - transform.position.z);
@@ -130,6 +135,7 @@ public class EnemyWaypoint : MonoBehaviour
             isStop=true;
             Speed = 0;
             Invoke(nameof(ResetAttack), stopTime);
+            rb.inertia = 5;
         }
     }
 
@@ -145,9 +151,29 @@ public class EnemyWaypoint : MonoBehaviour
 
             if (other.gameObject.tag == "Stop" && isStop == false)
         {
-            isStop=true;
-            Speed = 0;
-            Invoke(nameof(ResetAttack), stopTime);
+            if (other.gameObject.GetComponent<Stops>().itemType == Stops.ItemType.ToHighway)
+            {
+                isStop=true;
+                Speed = 0;
+                startSpeed = 3f;
+                Invoke(nameof(ResetAttack), stopTime);
+            }
+
+            if (other.gameObject.GetComponent<Stops>().itemType == Stops.ItemType.FromHighway)
+            {
+                isStop=true;
+                Speed = 0;
+                startSpeed = 1.5f;
+                Invoke(nameof(ResetAttack), 0F);
+            }
+
+            if (other.gameObject.GetComponent<Stops>().itemType == Stops.ItemType.Other)
+            {
+                isStop=true;
+                Speed = 0;
+                Invoke(nameof(ResetAttack), stopTime);
+            }
+            
         }
     }
 

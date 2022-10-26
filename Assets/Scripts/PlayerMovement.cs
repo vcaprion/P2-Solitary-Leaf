@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             UpdateCountdown();
             gameOver = true;
             gameOverMenu.SetActive(true);
-            Time.timeScale = 0;
+            speed = 0;
         }
 
 
